@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+  </head>
+  <body>
+  	<div class="bannerContainer">
+  		<div class="bannerInner">
+  			<div class="carouselContainer">
+  				<div class="carousel">
+  					<img src="img/img1.png">
+  					<img src="img/img2.png">
+                    <img src="img/img3.png">
+  				</div>
+  				<a class="next carousel-control" href="#">›</a>
+  				<a class="pre carousel-control" href="#">‹</a>
+  				<ul class="carousel-pagination"></ul>
+  			</div>
+  		</div>
+  	</div>
+  	<script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var caroselWidth = $(".carouselContainer").innerWidth();
+        var count = $('.carousel img').length;
+        var current = 1;
+        for(x=0; x < count ;x++){
+          $('.carousel-pagination').append("<li><a href='javascript:void(0);'>"+"x"+"</a></li>");
+        }
+        $('.carousel-pagination li:first-child').addClass('active');
+
+        setInterval(function(){
+          nextSlide();
+        },5000);
+
+        $('.next').click(function (){
+          nextSlide();
+        });
+        $('.pre').click(function (){
+          preSlide();
+        });
+
+        $(".carousel-pagination").on( "click", "li a", function(){
+          oldcurrent = current;
+          newcurrent = $('.carousel-pagination li').index(this) + 1;
+          if (newcurrent > oldcurrent) {
+            for (var i = oldcurrent; i < newcurrent; i++) {
+              j = i - oldcurrent;
+              setTimeout(function(){nextSlide()}, 400*j);
+            };
+          } else{
+              if (newcurrent < oldcurrent) {
+                for (var i = oldcurrent; i > newcurrent; i--) {
+                  j = oldcurrent - i;
+                  setTimeout(function(){preSlide()}, 400*j);
+                };
+              };
+            };
+        });
+
+        function nextSlide() {
+          $(".carousel img:nth-child("+current+")").animate({left:"-="+caroselWidth+"px"},500);
+          $(".carousel img:nth-child("+current+")").animate({left:"100%"},0);
+          $(".carousel-pagination li:nth-child("+current+")").removeClass('active');
+          if(current == count){
+            current = 1;
+          } else {
+            current = current+1;
+          }
+          $(".carousel img:nth-child("+current+")").animate({left:"-="+caroselWidth+"px"},500);
+          $(".carousel-pagination li:nth-child("+current+")").addClass('active');
+        }
+
+        function preSlide() {
+          if (current==1) {
+            m = count;
+          } else{ m = current -1;};
+          $(".carousel img:nth-child("+m+")").animate({left:"-100%"},0);
+          $(".carousel img:nth-child("+current+")").animate({left:"+="+caroselWidth+"px"},500);
+          $(".carousel-pagination li:nth-child("+current+")").removeClass('active');
+          if(current == 1){
+            current = count;}
+          else
+            {current = current-1;}
+          $(".carousel img:nth-child("+current+")").animate({left:"+="+caroselWidth+"px"},500);
+          $(".carousel-pagination li:nth-child("+current+")").addClass('active');
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+.bannerContainer{
+	width: 100%;
+	overflow: hidden;
+	background: #4E443C;
+}
+.bannerInner{
+	width: 768px;
+	margin: 0 auto;
+}
+.carouselContainer{
+	border: 10px solid #ffffff;
+	border-radius: 5px;
+	overflow: hidden;
+	position: relative;
+	margin: 35px 0px;
+}
+.carousel{
+	width: 10000em;
+	height: 300px;
+}
+.carousel img{
+	width: 748px;
+	height: 300px;
+	position: absolute;
+	left: 748px;
+	float: left;
+}
+.carousel img:first-child{
+	left: 0px;
+}
+.carouselContainer .carousel-control{
+	width: 30px;
+	height: 30px;
+	background: #4E443C;
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	box-shadow: 0px 0px 5px #F0EFE7;
+	border-radius: 30px;
+	text-align: center;
+	text-decoration: none;
+	color: #F0EFE7;
+	line-height: 26px;
+	font-size: 25px;
+}
+.carouselContainer .carousel-control:hover{
+	box-shadow: 0px 0px 15px #ffffff;
+	color: #ffffff;
+}
+.carouselContainer .next{
+	right: 5px;
+}
+.carouselContainer .pre{
+	left: 5px;
+}
+.carouselContainer .carousel-pagination{
+	position: absolute;
+	left:50%;
+	padding: 0px;
+	margin: 0px;
+	margin-left: -22.5px;
+	bottom: 10px;
+	list-style: none;
+}
+.carouselContainer .carousel-pagination li{
+	width: 10px;
+	height: 10px;
+	box-shadow: 0px 0px 5px #4E443C;
+	border-radius: 30px;
+	background: #ffffff;
+	text-indent: -99999px;
+	display: inline-block;
+	line-height: 10px;
+	margin-right: 5px;
+}
+.carouselContainer .carousel-pagination li.active{
+	background: #4E443C;
+	box-shadow: 0px 0px 5px #ffffff;
+}
+.carouselContainer .carousel-pagination li a {
+	width: 10px;
+	height: 10px;
+	display: block;
+}
